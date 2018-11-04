@@ -6,6 +6,7 @@ import { combineReducers } from 'redux';
 import navReducer from './navReducer';
 import authReducer from './authReducer';
 
+
 const AppReducer = combineReducers({
     nav: navReducer,
     auth: authReducer,

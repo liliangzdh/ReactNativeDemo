@@ -5,7 +5,7 @@ import React from "react";
 
 
 const navigation = createStackNavigator(routers, {
-    initialRouteName: 'User', // 默认显示界面
+    initialRouteName: '', // 默认显示界面
     navigationOptions: {
         cardStack: {
             gesturesEnabled: true

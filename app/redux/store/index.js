@@ -3,13 +3,19 @@
  */
 
 
-import { createStore, combineReducers, applyMiddleware } from 'redux';
-import * as reducer from '../reducer';
-import { middleware } from '../../navigation';
+import {applyMiddleware, createStore} from 'redux';
+import {middleware} from '../../navigation';
+import {createLogger} from 'redux-logger';
+import AppReducer from '../reducer/index';
+
+const logger = createLogger({
+    // ...options
+});
+
 
 const store = createStore(
-    combineReducers({ ...reducer }),
-    applyMiddleware(middleware)
+    AppReducer,
+    applyMiddleware(middleware,logger)
 );
 
 export default store;

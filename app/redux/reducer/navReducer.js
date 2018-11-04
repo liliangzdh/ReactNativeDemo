@@ -3,8 +3,14 @@
  */
 
 
-import { RootNavigator } from '../../navigation';
-import { NavigationActions } from 'react-navigation';
+import {RootNavigator} from '../../navigation';
+
+
+// const firstAction = RootNavigator.router.getActionForPathAndParams('User');
+// const tempNavState = RootNavigator.router.getStateForAction(firstAction);
+// const initialNavState = RootNavigator.router.getStateForAction(
+//     tempNavState
+// );
 
 const navReducer = (state, action) => {
     let nextState;
@@ -29,13 +35,13 @@ const navReducer = (state, action) => {
         //     )
         //     break;
         default:
-
             nextState = RootNavigator.router.getStateForAction(action, state);
-            console.log('这个是啥',nextState);
+            console.log(action.key);
             break;
     }
-
     return nextState || state;
 }
+
+
 
 export default navReducer;

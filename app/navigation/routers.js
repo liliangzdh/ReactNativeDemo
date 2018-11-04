@@ -11,14 +11,14 @@ import User from '../comtainers/User';
 
 
 
-//这么做是为了把这个导入堆栈中
-// const HomeStack = createStackNavigator({ Home });
-// const FindStack = createStackNavigator({ Find });
+// 这么做是为了把这个导入堆栈中
+const HomeStack = createStackNavigator({ Home });
+const FindStack = createStackNavigator({ Find });
 
 
 const HomeTab = createBottomTabNavigator({
     Home: {
-        screen: Home,
+        screen: HomeStack,
         navigationOptions: ({navigation, screenProps}) => ({
             tabBarLabel: '首页',
             tabBarIcon: (({tintColor, focused}) => {
@@ -39,7 +39,7 @@ const HomeTab = createBottomTabNavigator({
     },
 
     Find: {
-        screen: Find,
+        screen: FindStack,
         navigationOptions: ({navigation, screenProps}) => ({
             tabBarLabel: '发现',
             tabBarIcon: (({tintColor, focused}) => {
@@ -61,13 +61,13 @@ const HomeTab = createBottomTabNavigator({
 
 
 export default {
-    // HomeTab: {
-    //     screen: HomeTab,
-    //     navigationOptions: () => ({
-    //         header: null,
-    //     }),
-    //
-    // },
+    HomeTab: {
+        screen: HomeTab,
+        navigationOptions: () => ({
+            header: null,
+        }),
+
+    },
 
     Details: {
         screen: Details
