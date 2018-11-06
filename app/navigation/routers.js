@@ -66,17 +66,17 @@ export default {
         navigationOptions: () => ({
             header: null,
         }),
-
+        path:'app/home'
     },
-
-    Details: {
-        screen: Details
-    },
-    ReduxText2:{
-        screen:ReduxText2
-    },
+    // Details: {
+    //     screen: Details
+    // },
+    // ReduxText2:{
+    //     screen:ReduxText2
+    // },
     User:{
-        screen:User
+        screen:User,
+        path:'app/user'
     }
 
 }

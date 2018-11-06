@@ -1,11 +1,11 @@
 import React from 'react';
-import {View, Text, TouchableOpacity} from 'react-native';
+import {Text, TouchableOpacity, View} from 'react-native';
 // import { createStackNavigator } from 'react-navigation';
-import {
-    NavigationActions,
-} from 'react-navigation';
+import {connect} from "react-redux";
 
-export default class HomeScreen extends React.Component {
+
+const increaseAction = {type: 'increase'};
+export  default class HomeScreen extends React.Component {
 
     static navigationOptions = ({navigation, screenProps}) => ({
         title: navigation.getParam('headerTitle', '首页'),
@@ -27,6 +27,8 @@ export default class HomeScreen extends React.Component {
     //     });
 
     componentDidMount() {
+
+        console.log(this);
 
         this.props.navigation.setParams({headerTitle: '比赛'})
     }
@@ -52,14 +54,25 @@ export default class HomeScreen extends React.Component {
                     </Text>
                 </TouchableOpacity>
 
+                <TouchableOpacity
+                    onPress={() => {
 
+                        this.props.dispatch(increaseAction);
+
+                    }}>
+
+                    <Text>qwqw{this.props.value}</Text>
+                </TouchableOpacity>
             </View>
         );
     }
 }
 
-// export default createStackNavigator({
-//     Home: {
-//         screen: HomeScreen
-//     },
-// });
+
+// function mapStateToProps(state) {
+//     return {
+//         value: state.count,
+//     };
+// }
+//
+// export default connect(mapStateToProps)(HomeScreen);

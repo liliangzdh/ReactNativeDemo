@@ -35,8 +35,9 @@ const navReducer = (state, action) => {
         //     )
         //     break;
         default:
+
             nextState = RootNavigator.router.getStateForAction(action, state);
-            console.log(action.key);
+            // console.log(action.key);
             break;
     }
     return nextState || state;
