@@ -8,7 +8,6 @@ import {createStore, applyMiddleware} from 'redux';
 import {createLogger} from 'redux-logger';
 
 import PropTypes from 'prop-types';
-import Btn from '../conponents/Btn';
 
 
 /***
@@ -95,8 +94,6 @@ export default class movie_redux extends React.Component {
                     onIncrement={() => store.dispatch({type: 'INCREMENT'})}
                     onDecrement={() => store.dispatch({type: 'DECREMENT'})}
                 />
-
-                <Btn>qwqw</Btn>
             </View>
         );
     }

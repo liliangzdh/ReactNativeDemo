@@ -8,7 +8,7 @@ const App = createStackNavigator(routers, {
     initialRouteName: '', // 默认显示界面
     navigationOptions: {
         cardStack: {
-            gesturesEnabled: true
+            gesturesEnabled: false
         },
         headerStyle: {
             backgroundColor: Colors.color_white,
@@ -26,7 +26,7 @@ const App = createStackNavigator(routers, {
         },
         headerBackTitle: '返回',
         headerTintColor: '#666666',
-        gesturesEnabled:true,//是否滑动关闭页面
+        gesturesEnabled:false,//是否滑动关闭页面
         gestureResponseDistance:{horizontal:300}
     },
     mode: 'card',//modal  card

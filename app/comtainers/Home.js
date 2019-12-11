@@ -1,71 +1,101 @@
 import React from 'react';
-import {Text, TouchableOpacity, View} from 'react-native';
+import {Text, TouchableOpacity, View,Dimensions} from 'react-native';
 // import { createStackNavigator } from 'react-navigation';
 import {connect} from "react-redux";
+import {Calendar, CalendarList, Agenda} from 'react-native-calendars';
+
+const DEVICE_WIDTH = Dimensions.get('window').width;
 
 
-const increaseAction = {type: 'increase'};
 export  default class HomeScreen extends React.Component {
 
     static navigationOptions = ({navigation, screenProps}) => ({
         title: navigation.getParam('headerTitle', '首页'),
-        // headerRight:(
-        //     <Text onPress={navigation.state.params?navigation.state.params.navigatePress:null}>
-        //         右边
-        //     </Text>
-        // ),
     });
-    //
-    // static navigationOptions = ({ navigation }) => {
-    //     return {
-    //         title: navigation.getParam('headerTitle', 'A Nested Details Screen'),
-    //     };
-    // };
 
-    // static navigationOptions = ({navigation}) => ({
-    //         header: null,
-    //     });
 
     componentDidMount() {
-
-        console.log(this);
-
         this.props.navigation.setParams({headerTitle: '比赛'})
     }
 
     render() {
         return (
             <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-                <Text>Home Screen</Text>
 
-                <TouchableOpacity
-                    onPress={() => {
-                        //react-navigation 2.0 版本以后，已经修复了，启动一个页面多次的问题。
-                        console.log(this);
-                        this.props.navigation.navigate('User');
-                        this.props.navigation.setParams({
-                            title: '自定义Header',
-                            headerTitle: 'qw',
-                        })
-                    }}>
 
-                    <Text>
-                        点击跳转1
-                    </Text>
-                </TouchableOpacity>
+                {
+                    this.renderList()
+                }
 
-                <TouchableOpacity
-                    onPress={() => {
 
-                        this.props.dispatch(increaseAction);
-
-                    }}>
-
-                    <Text>qwqw{this.props.value}</Text>
-                </TouchableOpacity>
             </View>
         );
     }
+
+
+    renderList=()=>{
+        return(
+            <CalendarList
+                horizontal={true}
+                pagingEnabled={true}
+                calendarWidth={DEVICE_WIDTH}
+                markingType='multi-period'
+                theme={{
+                    backgroundColor: '#ffffff',
+                    calendarBackground: '#38218E',
+                    dayTextColor: 'white',
+                    textDisabledColor: '#68669B',
+                    todayTextColor: '#f00',
+                    monthTextColor: '#fff',
+                    selectedDayBackgroundColor: '#ff0',
+                    selectedDayTextColor: '#ff0',
+                }}
+                // Initially visible month. Default = Date()
+                // Minimum date that can be selected, dates before minDate will be grayed out. Default = undefined
+                // minDate={'2019-05-01'}
+                // // Maximum date that can be selected, dates after maxDate will be grayed out. Default = undefined
+                maxDate={'2019-12-30'}
+                // Handler which gets executed on day press. Default = undefined
+                onDayPress={(day) => {
+                    console.log('selected day', day)
+                }}
+                // Handler which gets executed on day long press. Default = undefined
+                onDayLongPress={(day) => {
+                    console.log('selected day', day)
+                }}
+                // Month format in calendar title. Formatting values: http://arshaw.com/xdate/#Formatting
+                monthFormat={'yyyy-MM'}
+                // 日历中可见月份发生变化时执行的处理程序。默认值= undefined
+                onMonthChange={(month) => {
+                    console.log('month changed', month)
+                }}
+                // 隐藏月份导航箭头。默认值= false
+                hideArrows={false}
+                //用自定义箭头替换默认箭头（方向可以是“左”或“右”）
+                renderArrow={(direction) => {
+                    return (
+                        <Text style={{color:'white'}}>{direction}</Text>
+                    )
+                }}
+                // 不要在月份页面中显示其他月份的日期。默认值= false
+                hideExtraDays={false}
+                // 如果hideArrows = false 和hideExtraDays = false，则从
+                // 日历页面中可见的另一个月//点按灰显的日期//时不切换月份。默认值= false
+                disableMonthChange={false}
+                // 如果firstDay = 1周从星期一开始。请注意，dayNames和dayNamesShort仍应从星期日开始。
+                firstDay={7}
+                // 隐藏日期名称。默认值=false.（显示周几标题)
+                hideDayNames={false}
+                // 在左侧显示周号。默认值= false
+                showWeekNumbers={false}
+                onPressArrowLeft={(substractMonth) => {
+                    substractMonth();
+                }}
+                onPressArrowRight={(addMonth) => addMonth()}
+            />
+        )
+    }
+
 }
 
 

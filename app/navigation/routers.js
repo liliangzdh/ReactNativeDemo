@@ -1,19 +1,24 @@
 import React from "react";
 import {Image} from 'react-native';
-import {TabNavigator,createBottomTabNavigator,createStackNavigator} from 'react-navigation';
+import {TabNavigator, createBottomTabNavigator, createStackNavigator} from 'react-navigation';
 import Images from '../theme/images';
 
 import Home from '../comtainers/Home';
 import Find from '../comtainers/Find';
-import Details from '../comtainers/Details';
-import ReduxText2 from '../comtainers/ReduxText2';
 import User from '../comtainers/User';
 
+import {
+    CalendarsScreen,
+    AgendaScreen,
+    CalendarsList,
+    HorizontalCalendarList,
+    ExpandableCalendar
+} from '../comtainers/calendars'
 
 
 // 这么做是为了把这个导入堆栈中
-const HomeStack = createStackNavigator({ Home });
-const FindStack = createStackNavigator({ Find });
+const HomeStack = createStackNavigator({Home});
+const FindStack = createStackNavigator({Find});
 
 
 const HomeTab = createBottomTabNavigator({
@@ -34,7 +39,7 @@ const HomeTab = createBottomTabNavigator({
             headerTitleStyle: {
                 alignSelf: 'center',
             },
-            title:'首页'
+            title: '首页'
         }),
     },
 
@@ -66,17 +71,24 @@ export default {
         navigationOptions: () => ({
             header: null,
         }),
-        path:'app/home'
     },
-    // Details: {
-    //     screen: Details
-    // },
-    // ReduxText2:{
-    //     screen:ReduxText2
-    // },
-    User:{
-        screen:User,
-        path:'app/user'
+    User: {
+        screen: User,
+    },
+    CalendarsScreen: {
+        screen: CalendarsScreen,
+    },
+    AgendaScreen: {
+        screen: AgendaScreen,
+    },
+    CalendarsList: {
+        screen: CalendarsList,
+    },
+    HorizontalCalendarList: {
+        screen: HorizontalCalendarList,
+    },
+    ExpandableCalendar: {
+        screen: ExpandableCalendar,
     }
 
 }
