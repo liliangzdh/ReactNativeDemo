@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "react": "16.6.0-alpha.8af6728",
-    "react-native": "0.57.4",
+    "react-native": "0.70.2",
     "react-native-calendars": "^1.214.0",
     "react-native-slideable-calendar-strip": "^0.4.0",
     "react-navigation": "^2.18.2",
